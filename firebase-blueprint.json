@@ -1,0 +1,160 @@
+{
+  "entities": {
+    "Kelas": {
+      "title": "Kelas",
+      "description": "Entity representing a school class",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "tingkat": { "type": "string" },
+        "waliKelas": { "type": "string" }
+      },
+      "required": ["id", "name", "tingkat"]
+    },
+    "User": {
+      "title": "User",
+      "description": "User entity for teachers and students",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "username": { "type": "string" },
+        "name": { "type": "string" },
+        "role": { "type": "string" },
+        "nisn": { "type": "string" },
+        "nip": { "type": "string" },
+        "kelasId": { "type": "string" },
+        "password": { "type": "string" }
+      },
+      "required": ["id", "username", "name", "role"]
+    },
+    "MataPelajaran": {
+      "title": "MataPelajaran",
+      "description": "Subject entity",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "kode": { "type": "string" },
+        "name": { "type": "string" },
+        "tingkat": { "type": "string" },
+        "guruName": { "type": "string" }
+      },
+      "required": ["id", "kode", "name"]
+    },
+    "ExamPackage": {
+      "title": "ExamPackage",
+      "description": "Exam package entity",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "title": { "type": "string" },
+        "subjectId": { "type": "string" },
+        "authorId": { "type": "string" },
+        "questions": { "type": "array" }
+      },
+      "required": ["id", "title"]
+    },
+    "ClassExamSession": {
+      "title": "ClassExamSession",
+      "description": "Class exam session entity",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "packageId": { "type": "string" },
+        "token": { "type": "string" },
+        "durationMinutes": { "type": "number" },
+        "status": { "type": "string" }
+      },
+      "required": ["id", "packageId", "token"]
+    },
+    "AttendanceRecord": {
+      "title": "AttendanceRecord",
+      "description": "Attendance record entity",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "studentId": { "type": "string" },
+        "sessionId": { "type": "string" },
+        "timestamp": { "type": "string" }
+      },
+      "required": ["id", "studentId"]
+    },
+    "ProctorViolation": {
+      "title": "ProctorViolation",
+      "description": "Proctor violation log",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "studentId": { "type": "string" },
+        "type": { "type": "string" },
+        "timestamp": { "type": "string" }
+      },
+      "required": ["id", "studentId"]
+    },
+    "ExamSubmission": {
+      "title": "ExamSubmission",
+      "description": "Exam submission result",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "studentId": { "type": "string" },
+        "packageId": { "type": "string" },
+        "score": { "type": "number" }
+      },
+      "required": ["id", "studentId"]
+    },
+    "SchoolProfile": {
+      "title": "SchoolProfile",
+      "description": "School metadata and configuration",
+      "type": "object",
+      "properties": {
+        "schoolName": { "type": "string" },
+        "npsn": { "type": "string" },
+        "headmaster": { "type": "string" }
+      },
+      "required": ["schoolName"]
+    }
+  },
+  "firestore": {
+    "/cbt_classes/{classId}": {
+      "schema": { "$ref": "#/entities/Kelas" },
+      "description": "Collection of school classes"
+    },
+    "/cbt_teachers/{teacherId}": {
+      "schema": { "$ref": "#/entities/User" },
+      "description": "Collection of teachers"
+    },
+    "/cbt_students/{studentId}": {
+      "schema": { "$ref": "#/entities/User" },
+      "description": "Collection of students"
+    },
+    "/cbt_subjects/{subjectId}": {
+      "schema": { "$ref": "#/entities/MataPelajaran" },
+      "description": "Collection of subjects"
+    },
+    "/cbt_packages/{packageId}": {
+      "schema": { "$ref": "#/entities/ExamPackage" },
+      "description": "Collection of exam packages"
+    },
+    "/cbt_sessions/{sessionId}": {
+      "schema": { "$ref": "#/entities/ClassExamSession" },
+      "description": "Collection of exam sessions"
+    },
+    "/cbt_attendance/{attendanceId}": {
+      "schema": { "$ref": "#/entities/AttendanceRecord" },
+      "description": "Collection of attendance records"
+    },
+    "/cbt_violations/{violationId}": {
+      "schema": { "$ref": "#/entities/ProctorViolation" },
+      "description": "Collection of proctoring violations"
+    },
+    "/cbt_hasil_ujian/{submissionId}": {
+      "schema": { "$ref": "#/entities/ExamSubmission" },
+      "description": "Collection of exam results"
+    },
+    "/cbt_meta/profile": {
+      "schema": { "$ref": "#/entities/SchoolProfile" },
+      "description": "School profile metadata"
+    }
+  }
+}

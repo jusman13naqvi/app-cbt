@@ -1,0 +1,22 @@
+# =========================================================================
+# CLOUDFLARE PAGES & WORKERS CONFIGURATION: CBT SPANJU
+# SMP Negeri 7 Muara Badak - Kandidat Sekolah Rujukan Google
+# =========================================================================
+
+name = "cbt-spanju-smpn7"
+compatibility_date = "2026-10-01"
+pages_build_output_dir = "./dist"
+
+[site]
+bucket = "./dist"
+
+# Konfigurasi Database Cloudflare D1 (Serverless Realtime Database)
+[[d1_databases]]
+binding = "DB"
+database_name = "cbt_spanju_db"
+database_id = "your-cloudflare-d1-uuid-here"
+
+[vars]
+VITE_SCHOOL_NAME = "SMP Negeri 7 Muara Badak"
+VITE_SCHOOL_STATUS = "Kandidat Sekolah Rujukan Google"
+VITE_ENVIRONMENT = "production"

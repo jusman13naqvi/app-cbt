@@ -1,0 +1,37 @@
+@import "tailwindcss";
+@layer base {
+  html, body {
+    background-color: #070d1e;
+    color: #f8fafc;
+    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  }
+  h1, h2, h3, h4, h5, h6, .font-display {
+    font-family: 'Outfit', 'Plus Jakarta Sans', system-ui, sans-serif;
+    color: #ffffff;
+  }
+  input, select, textarea {
+    color: #ffffff;
+  }
+}
+
+/* Custom delicate scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* User select lock during exam mode */
+.cbt-secure-mode {
+  user-select: none !important;
+  -webkit-user-select: none !important;
+}

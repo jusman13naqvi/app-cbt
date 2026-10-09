@@ -1,0 +1,8 @@
+{
+  "name": "CBT SPANJU - SMP Negeri 7 Muara Badak",
+  "description": "Aplikasi CBT (Computer Based Test) online modern, elegan, dan aman khusus Chromebook untuk SMP Negeri 7 Muara Badak - Kandidat Sekolah Rujukan Google.",
+  "requestFramePermissions": [
+    "camera"
+  ],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
